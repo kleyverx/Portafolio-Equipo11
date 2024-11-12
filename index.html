@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Equipo 11</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Abril Fatface', cursive;
+            background-color: #1a1a1a;
+        }
+        .bento-item {
+            transition: all 0.3s ease;
+            background-color: #FEFAE0;
+        }
+        .bento-item:hover {
+            transform: translateY(-5px);
+        }
+        .expanded {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .active {
+            box-shadow: 0 10px 15px -3px rgba(254, 250, 224, 0.1), 0 4px 6px -2px rgba(254, 250, 224, 0.05);
+        }
+        @media (max-width: 640px) {
+            .expanded {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 bg-gray-900 text-gray-100">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 text-[#FEFAE0]">Portafolio Equipo 11</h1>
+    <div id="bento-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Los elementos del Bento se generarán aquí con JavaScript -->
+    </div>
+
+    <script>
+        const bentoItems = [
+            { id: 1, title: 'Equipo 11', icon: '👤', content: `
+                <div class="flex flex-col sm:flex-row items-center mb-4">
+                    <img src="1.jpg" alt="Kleyver Urbina" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 sm:mr-4 mb-4 sm:mb-0 object-cover aspect-[3/4]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-gray-800">Kleyver Urbina 19 años</h3>
+                        <p class="text-sm sm:text-base text-gray-700">Desarrollador Full Stack apasionado con experiencia en HTML, CSS, JavaScript, Python y PHP.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center mb-4">
+                    <img src="2.jpg" alt="Juan Verdú" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 sm:mr-4 mb-4 sm:mb-0 object-cover aspect-[3/4]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-gray-800">Juan Verdú 29 años</h3>
+                        <p class="text-sm sm:text-base text-gray-700">Especialista en el área de telecomunicaciones y soporte técnico.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center mb-4">
+                    <img src="3.jpg" alt="Kleyver Urbina" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 sm:mr-4 mb-4 sm:mb-0 object-cover aspect-[3/4]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-gray-800">Norbelis Castillo 37 años</h3>
+                        <p class="text-sm sm:text-base text-gray-700">TSU en Informática. Especialista en Soporte Técnico e Infraestructura de Redes.  </p>
+                    </div>
+                </div>
+            `, isOpen: true },
+            { id: 2, title: 'Proyecto', icon: '💻', content: `
+                <div class="grid sm:grid-cols-2 gap-4 mt-4">
+                    <img src="cuento.png" alt="Proyecto 1" class="rounded-lg aspect-[1/1] w-full h-auto object-cover">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-gray-800">Cuentos del Equipo 11</h3>
+                        <p class="text-sm sm:text-base text-gray-700 mb-2">Habia una vez...</p>
+                        <a href="https://drive.google.com/drive/folders/1igYKE7jpgPzzIaXrc700H0xAsXHvbRll" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">Ver proyecto</a>
+                    </div>
+                </div>
+            ` },
+            { id: 3, title: 'Experiencia', icon: '🏢', content: `
+                <div class="mt-2">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Kleyver Urbina</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Estudiante de Ingeniería en Informática con 2 años de experiencia académica y práctica en desarrollo de software.</p>
+                </div>
+                <div class="mt-2">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Juan Verdú</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Experiencia: 1 año como especialista en Operaciones e Infraestructura en Farmatodo.</p>
+                    <p class="text-sm sm:text-base text-gray-700">Experiencia: 2 Años como especialista de redes en CANTV..</p>
+                </div>
+                <div class="mt-2">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">Norbelis Castillo</h3>
+                    <p class="text-sm sm:text-base text-gray-700">TSU en Informática. Especialista en Soporte Técnico e Infraestructura de Redes.</p>
+                </div>
+            ` },
+            { id: 4, title: 'Habilidades del Equipo', icon: '⭐', content: `
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                    ${[
+                        { name: 'PHP', level: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' },
+                        { name: 'CSS', level: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg' },
+                        { name: 'HTML', level: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg' },
+                        { name: 'JavaScript', level: 70, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' },
+                        { name: 'Python', level: 45, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg' },
+                        { name: 'Figma', level: 60, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+                        { name: 'PRTG', level: 70, icon: 'https://icongr.am/entypo/signal.svg?size=128&color=0b0909' },
+                        { name: 'Cisco (Básico)', level: 60, icon: 'https://icongr.am/simple/cisco.svg?size=128&color=currentColor&colored=false' },
+                        { name: 'Mikrotik', level: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
+                        { name: 'Meraki', level: 80, icon: 'https://icongr.am/simple/cisco.svg?size=128&color=currentColor&colored=false' },
+                    ].map(skill => `
+                        <div class="flex flex-col items-center">
+                            <img src="${skill.icon}" alt="${skill.name}" class="w-8 h-8 sm:w-12 sm:h-12 mb-2">
+                            <div class="w-full bg-gray-300 rounded-full h-2 sm:h-2.5 mb-1 overflow-hidden" data-level="${skill.level}">
+                                <div class="bg-blue-600 h-full rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">${skill.name} - ${skill.level}%</p>
+                        </div>
+                    `).join('')}
+                </div>
+            ` },
+            { id: 5, title: 'GitHub', icon: '🐙', content: `    
+            <a href="https://github.com/kleyverx" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    Github de Kleyver Urbina
+                </a>
+                <div>
+                <a href="https://github.com/Seitrus" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    Github de Juan Verdú
+                </a>
+                </div>
+                <div>
+                <a href="https://github.com/dreyka10" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    Github de Norbelis Castillo
+                </a>
+                </div>
+            ` },
+            { id: 6, title: 'LinkedIn', icon: '🔗', content: `
+            
+                <a href="https://www.linkedin.com/in/kleyver-cadrazco-655578327/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    linkedin de Kleyver Urbina
+                </a>
+                <div>
+                <a href="https://www.linkedin.com/in/juan-verd%C3%BA-b4ba0022a/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    linkedin de Juan Verdú
+                </a>
+                </div>
+                <div>
+                <a href="https://linkedin.com/in/norbelisc" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    linkedin de Norbelis Castillo
+                </a>
+                </div>
+            
+            ` },
+            { id: 7, title: 'Contacto', icon: '✉️', content: `
+                <a href="mailto:kleyvercell2@gmail.com" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    kleyvercell2@gmail.com
+                </a>
+                <div>
+                <a href="mailto:juan.ernesto.vg@gmail.com" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    juan.ernesto.vg@gmail.com
+                </a>
+                </div>
+                <div>
+                <a href="mailto:kleyvercell2@gmail.com" class="text-blue-600 hover:underline text-sm sm:text-base">
+                    norbelis10@gmail.com
+                </a>
+                </div>
+            ` },
+        ];
+
+        const bentoGrid = document.getElementById('bento-grid');
+
+        bentoItems.forEach(item => {
+            const bentoItem = document.createElement('div');
+            bentoItem.className = `bento-item p-4 sm:p-6 rounded-lg shadow-md cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 ${item.isOpen ? 'expanded active' : ''}`;
+            bentoItem.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <span class="text-2xl sm:text-3xl mr-2">${item.icon}</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-800">${item.title}</h2>
+                </div>
+                <div class="${item.isOpen ? '' : 'hidden'} content">${item.content}</div>
+            `;
+            bentoItem.addEventListener('click', () => toggleExpand(bentoItem));
+            bentoGrid.appendChild(bentoItem);
+        });
+
+        function toggleExpand(item) {
+            const isMobile = window.innerWidth <= 640;
+            if (!item.classList.contains('expanded')) {
+                const expandedItems = document.querySelectorAll('.expanded');
+                expandedItems.forEach(expandedItem => {
+                    expandedItem.classList.remove('expanded', 'active');
+                    expandedItem.querySelector('.content').classList.add('hidden');
+                });
+            }
+            item.classList.toggle('expanded');
+            item.classList.toggle('active');
+            const content = item.querySelector('.content');
+            content.classList.toggle('hidden');
+
+            if (isMobile) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            if (!content.classList.contains('hidden')) animateSkillBars();
+        }
+
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.bg-blue-600');
+            skillBars.forEach(bar => {
+                const width = bar.parentElement.dataset.level;
+                setTimeout(() => {
+                    bar.style.width = `${width}%`;
+                }, 200);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', animateSkillBars);
+
+        window.addEventListener('resize', () => {
+            const isMobile = window.innerWidth <= 640;
+            const expandedItems = document.querySelectorAll('.expanded');
+            expandedItems.forEach(item => {
+                if (isMobile) {
+                    item.style.gridColumn = 'span 1';
+                    item.style.gridRow = 'span 1';
+                } else {
+                    item.style.gridColumn = 'span 2';
+                    item.style.gridRow = 'span 2';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
